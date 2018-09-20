@@ -1,0 +1,4 @@
+Non existing player
+4 4 4 4 4 4 0 4 4 4 4 4 4 0     0
+B 7
+java.lang.IllegalArgumentException: Wrong player: B

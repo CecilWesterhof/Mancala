@@ -1,0 +1,4 @@
+It should be possible to play if the other player does not have stones in his pits
+0 1 0 0 0 0 12 9 0 3 2 1 0 20     0
+A 1
+0 0 0 0 0 0 15 9 0 3 0 1 0 20     1

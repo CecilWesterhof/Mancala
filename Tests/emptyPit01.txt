@@ -1,0 +1,4 @@
+You cannot take stones from an empty pit
+4 4 0 5 5 5 1 4 4 4 4 4 4 0     0
+A 2
+java.lang.IllegalArgumentException: You cannot select an empty pit: 2

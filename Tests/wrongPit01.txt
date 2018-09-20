@@ -1,0 +1,4 @@
+Taking the stone from a pit you are not allowed to take from
+4 4 4 4 4 4 0 4 4 4 4 4 4 0     0
+A 7
+java.lang.IllegalArgumentException: Wrong pit: 7

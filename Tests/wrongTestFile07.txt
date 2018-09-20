@@ -1,0 +1,4 @@
+A move needs exact two elements
+4 4 4 4 4 4 0 4 4 4 4 4 4 0     0
+A
+4 4 0 5 5 5 1 4 4 4 4 4 4 0     0

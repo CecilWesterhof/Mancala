@@ -1,0 +1,4 @@
+Player does not change, because ends in mancala.
+4 4 4 4 4 4 0 4 4 4 4 4 4 0     0
+A 2
+4 4 0 5 5 5 1 4 4 4 4 4 4 0     0

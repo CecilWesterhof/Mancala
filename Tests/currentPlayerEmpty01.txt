@@ -1,0 +1,4 @@
+When current player cannot move the game is finished
+0 0 0 0 0 1 12 9 0 3 2 1 0 20     0
+A 5
+0 0 0 0 0 0 13 0 0 0 0 0 0 35     -1
