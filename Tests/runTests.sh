@@ -5,6 +5,9 @@ set -o errexit
 set -o nounset
 
 
+declare -r _msgFailed='%d test(s) failed\n'
+declare -r _msgTotal='Executed %d tests\n'
+
 declare -a testFiles=(
     currentPlayerEmpty01.txt
     currentPlayerEmpty02.txt
@@ -31,5 +34,5 @@ for testFile in "${testFiles[@]}" ; do
         totalErrors+=1
     fi
 done
-printf "Executed %d tests\n"                 ${totalTests}
-printf "There were %d tests with an error\n" ${totalErrors}
+printf "${_msgTotal}"  ${totalTests}
+printf "${_msgFailed}" ${totalErrors}

@@ -5,8 +5,9 @@ set -o errexit
 set -o nounset
 
 
+declare -r _expectedError=201
 declare -r _msgTotal='Executed %d tests\n'
-declare -r _msgWrong='%d test(s) with did not give the expected error\n'
+declare -r _msgWrong='%d test(s) which did not give the expected error\n'
 
 declare -a testFiles=(
     wrongTestFile01.txt
@@ -32,8 +33,8 @@ for testFile in "${testFiles[@]}" ; do
     scala ../Mancala.scala --test ${testFile} &>/dev/null
     error=${?}
     set -o errexit
-    if [[ ${error} -ne 201 ]] ; then
-        echo "${testFile} did not return 201 (${error})"
+    if [[ ${error} -ne ${_expectedError} ]] ; then
+        echo "${testFile} did not return ${_expectedError} (${error})"
         totalErrors+=1
     fi
 done
