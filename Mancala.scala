@@ -3,9 +3,18 @@
  * Playable on command-line (scala Mancala.scala --play)
  * File based test          (scala Mancala.scala --test FILENAME)
  *
- * With the tests an exit 1 is done when there is a problem with the test file
- * In this way it is easy to terminate the tests when there is a problem with a test file
- * In my opinion the best option: you should not run tests when they do not have a correct syntax
+ * Because exit codes 1 to 135 are used by Linux and 255 is often used
+ * as user defined exit code I use the following exit coded:
+ * Exit codes:
+ * -   0 OK
+ * - 201 Test file had a wrong format
+ * - 202 Called with wrong parameters
+ *
+ * With the tests an exit 201 is done when there is a problem with the
+ * test file. In this way it is easy to terminate the tests when there
+ * is a problem with a test file. In my opinion the best option: you
+ * should not run tests when they do not have a correct syntax for all
+ * your test files.
  *
  * To be improved upon:
  * - Use an user defined exception
@@ -95,7 +104,7 @@ object Mancala {
 
   def errorExit(message : String) {
     println(message)
-    System.exit(1)
+    System.exit(201)
   }
 
   // Create board for starting a game
@@ -322,6 +331,6 @@ object Mancala {
   def wrongCall() {
     println("ERROR: Called Wrongly")
     usage()
-    System.exit(1)
+    System.exit(202)
   }
 }

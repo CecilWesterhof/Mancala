@@ -5,6 +5,9 @@ set -o errexit
 set -o nounset
 
 
+declare -r _msgTotal='Executed %d tests\n'
+declare -r _msgWrong='%d test(s) with did not give the expected error\n'
+
 declare -a testFiles=(
     wrongTestFile01.txt
     wrongTestFile02.txt
@@ -17,19 +20,22 @@ declare -a testFiles=(
     wrongTestFile09.txt
 )
 
+declare    error
 declare -i totalTests=0
 declare -i totalErrors=0
 
 cd $(dirname "$(readlink -f "$0")")
-# All the test should give an error, that is why we do not exit on error anymore
-set +o errexit
 for testFile in "${testFiles[@]}" ; do
     totalTests+=1
-    scala ../Mancala.scala --test ${testFile} >/dev/null
-    if [[ ${?} -ne 1 ]] ; then
-        echo "${testFile} did not return 1"
+    # We need the error code so temporaly disable exit on error
+    set +o errexit
+    scala ../Mancala.scala --test ${testFile} &>/dev/null
+    error=${?}
+    set -o errexit
+    if [[ ${error} -ne 201 ]] ; then
+        echo "${testFile} did not return 201 (${error})"
         totalErrors+=1
     fi
 done
-printf "Executed %d tests\n"                 ${totalTests}
-printf "There were %d tests with an error\n" ${totalErrors}
+printf "${_msgTotal}" ${totalTests}
+printf "${_msgWrong}" ${totalErrors}
